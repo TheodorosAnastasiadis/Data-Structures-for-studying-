@@ -3,3 +3,4 @@
          1)Stack
          2)Queue
          3)Circular Queue
+         4)Linked List
