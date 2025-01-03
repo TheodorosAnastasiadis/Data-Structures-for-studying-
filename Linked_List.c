@@ -16,6 +16,10 @@ typedef struct {
 // Function to create an empty queue
 Queue* createQueue() {
     Queue* queue = (Queue*)malloc(sizeof(Queue));
+    if (queue == NULL) {
+        printf("Error: Memory allocation failed\n");
+        exit(1);
+    }
     queue->front = queue->rear = NULL;
     return queue;
 }
@@ -28,6 +32,10 @@ int isEmpty(Queue* queue) {
 // Function to add an item to the queue (enqueue)
 void enqueue(Queue* queue, int item) {
     Node* newNode = (Node*)malloc(sizeof(Node));
+    if (newNode == NULL) {
+        printf("Error: Memory allocation failed\n");
+        exit(1);
+    }
     newNode->data = item;
     newNode->next = NULL;
 
@@ -90,12 +98,21 @@ int main() {
     while (1) {
         printf("\n1. Enqueue\n2. Dequeue\n3. Display\n4. Exit\n");
         printf("Enter your choice: ");
-        scanf("%d", &choice);
+        if (scanf("%d", &choice) != 1) {
+            printf("Invalid input\n");
+            while (getchar() != '\n');
+            continue;
+        }
+
 
         switch (choice) {
             case 1:
                 printf("Enter the value to enqueue: ");
-                scanf("%d", &value);
+                if (scanf("%d", &value) != 1) {
+                    printf("Invalid input\n");
+                    while (getchar() != '\n');
+                    continue;
+                }
                 enqueue(queue, value);
                 break;
             case 2:
@@ -109,11 +126,10 @@ int main() {
                 break;
             case 4:
                 freeQueue(queue);
-                exit(0);
+                printf("Queue freed\n");
+                return 0;
             default:
                 printf("Invalid choice. Please try again.\n");
         }
     }
-
-    return 0;
 }
