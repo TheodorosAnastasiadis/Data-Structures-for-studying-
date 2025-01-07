@@ -5,6 +5,7 @@
 typedef struct Node {
     int data;
     struct Node* next;
+    int size;
 } Node;
 
 // Structure for the queue
@@ -14,13 +15,14 @@ typedef struct {
 } Queue;
 
 // Function to create an empty queue
-Queue* createQueue() {
+Queue* initializeQueue() {
     Queue* queue = (Queue*)malloc(sizeof(Queue));
     if (queue == NULL) {
         printf("Error: Memory allocation failed\n");
         exit(1);
     }
-    queue->front = queue->rear = NULL;
+    queue->front = NULL;
+    queue->rear = NULL;
     return queue;
 }
 
@@ -49,22 +51,19 @@ void enqueue(Queue* queue, int item) {
 }
 
 // Function to remove an item from the queue (dequeue)
-int dequeue(Queue* queue) {
+int dequeue(Queue* queue, int* item) {
     if (isEmpty(queue)) {
         printf("Error: Queue is empty\n");
-        return -1;
+        return 0; // Indicates failure
     }
-
     Node* temp = queue->front;
-    int item = temp->data;
+    *item = temp->data;
     queue->front = queue->front->next;
-
     if (queue->front == NULL) {
         queue->rear = NULL;
     }
-
     free(temp);
-    return item;
+    return 1; // Indicates success
 }
 
 // Function to display the queue
@@ -85,6 +84,9 @@ void displayQueue(Queue* queue) {
 
 // Function to free the memory used by the queue
 void freeQueue(Queue* queue) {
+    if (queue == NULL) {
+        return;
+    }
     while (!isEmpty(queue)) {
         dequeue(queue);
     }
