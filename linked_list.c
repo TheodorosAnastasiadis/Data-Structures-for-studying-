@@ -66,8 +66,8 @@ int main(){
 
     printStack(&stack);
 
-    printf("Αφαίρεση στοιχείου: %d\n", pop(&stack));
-    printf("Αφαίρεση στοιχείου: %d\n", pop(&stack));
+    printf("remove item: %d\n", pop(&stack));
+    printf("remove item: %d\n", pop(&stack));
 
     push(&stack, 40);
     push(&stack, 50);
@@ -75,7 +75,7 @@ int main(){
     printStack(&stack);
 
     while (!isEmpty(&stack)) {
-        printf("Αφαίρεση στοιχείου: %d\n", pop(&stack));
+        printf("remove item: %d\n", pop(&stack));
     }
 
     printStack(&stack);
