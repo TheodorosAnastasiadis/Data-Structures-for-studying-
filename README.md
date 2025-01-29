@@ -1,8 +1,10 @@
 ﻿# All Data Structures written in C 
-     Data Structures included so far:
-         1)Stack
-         2)Queue
-         3)Circular Queue
-         4)Linked List
+ 
+### Data Structures included so far
+ - Stack
+ - Queue
+- Circular Queue
+- Linked List
+- Binary Tre (Function)
 
-            Note: Added simpler versions of stack and queue
+###### Note: Added simpler versions of stack and queue
