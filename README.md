@@ -5,6 +5,6 @@
  - Queue
 - Circular Queue
 - Linked List
-- Binary Tre (Function)
+- Binary Tree (Function)
 
 ###### Note: Added simpler versions of stack and queue
